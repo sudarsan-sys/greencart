@@ -17,7 +17,7 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 4000;
 
-const allowedOrigins = ['http://localhost:5173'];
+const allowedOrigins = ['http://localhost:5173','https://greencart-backend-taupe-phi.vercel.app'];
 
 app.post('/stripe',express.raw({type:"application/json"}),stripeWebhooks)
 

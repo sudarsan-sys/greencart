@@ -1,4 +1,3 @@
-
 //place order COD : /api/order/cod
 
 import Order from "../models/Order.js";
@@ -9,7 +8,8 @@ import User from "../models/User.js";
 
 export const placeOrderCOD = async (req, res) => {
     try {
-        const { userId, items, address } = req.body;
+        const { items, address } = req.body;
+        const userId = req.userId; // Get userId from auth middleware
         if (!address || items.length === 0) {
             return res.json({ success: false, message: "Invalid Data" })
 
@@ -83,7 +83,8 @@ export const getAllOrders = async (req, res) => {
 
 export const placeOrderStripe = async (req, res) => {
     try {
-        const { userId, items, address } = req.body;
+        const { items, address } = req.body;
+        const userId = req.userId; // Get userId from auth middleware
         const { origin } = req.headers;
         if (!address || items.length === 0) {
             return res.json({ success: false, message: "Invalid Data" })

@@ -39,7 +39,7 @@ const Cart = () => {
 
   const getUserAddress = async () => {
     try {
-      const { data } = await axios.get(`/api/address/get?userId=${user._id}`);
+      const { data } = await axios.get('/api/address/get');
       setAddresses(data.addresses || []);
       if (data.addresses.length > 0) {
         setSelectedAddress(data.addresses[0]);
@@ -62,7 +62,6 @@ const Cart = () => {
 
       if (paymentOption === "COD") {
         const response = await axios.post('/api/order/cod', {
-          userId: user._id,
           items: cartArray.map(item => ({ product: item._id, quantity: item.quantity })),
           address: selectedAddress._id
         });
@@ -78,7 +77,6 @@ const Cart = () => {
       else {
         //place order with stripe
         const response = await axios.post('/api/order/stripe', {
-          userId: user._id,
           items: cartArray.map(item => ({ product: item._id, quantity: item.quantity })),
           address: selectedAddress._id
         });

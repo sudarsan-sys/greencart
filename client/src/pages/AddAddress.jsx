@@ -42,7 +42,6 @@ const AddAddress = () => {
     try {
       const payload = {
         address,
-        userId: user._id, // <-- Make sure this is included
       };
       const { data } = await axios.post('/api/address/add', payload);
 

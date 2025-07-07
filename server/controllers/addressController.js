@@ -2,7 +2,7 @@ import Address from "../models/Address.js";
 //get address : /api/address/get
 export const getAddress = async (req, res) => {
   try {
-    const { userId } = req.query; // ✅ this is correct
+    const userId = req.userId; // Get userId from auth middleware
     const addresses = await Address.find({ userId });
     res.json({ success: true, addresses });
   } catch (error) {
@@ -15,7 +15,8 @@ export const getAddress = async (req, res) => {
 
 export const addAddress = async (req, res) => {
   try {
-    const { address, userId } = req.body;
+    const { address } = req.body;
+    const userId = req.userId; // Get userId from auth middleware
 
     await Address.create({ ...address, userId });
 

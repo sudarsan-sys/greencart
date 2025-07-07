@@ -79,7 +79,6 @@ export const AppContextProvider = ({ children }) => {
       if (!user || !user._id) return; // Ensure user ID exists
       try {
         const { data } = await axios.post('/api/cart/update', {
-          userId: user._id,
           cartItems,
         });
         if (!data.success) {

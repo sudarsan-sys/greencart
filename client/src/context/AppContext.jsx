@@ -63,13 +63,17 @@ export const AppContextProvider = ({ children }) => {
 
   const fetchProducts = async () => {
     try {
+      console.log('Fetching products from:', axios.defaults.baseURL);
       const { data } = await axios.get('/api/product/list');
       if (data.success) {
         setProducts(data.products);
       } else {
+        console.error('Product fetch failed:', data.message);
         toast.error(data.message);
       }
     } catch (error) {
+      console.error('Product fetch error:', error);
+      console.error('Error details:', error.response?.data);
       toast.error("Failed to fetch products");
     }
   };

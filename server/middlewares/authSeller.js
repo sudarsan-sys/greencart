@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken"
 const authSeller = async (req, res, next) => {
     const { token } = req.cookies;  // ✅ Corrected: match cookie name
     if (!token) {
-        return res.json({ success: false, message: "Not authorized" });
+        return res.json({ success: false, message: "Not Authorized" });
     }
 
     try {

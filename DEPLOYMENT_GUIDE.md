@@ -6,7 +6,7 @@
 Add these environment variables in your Vercel dashboard:
 
 ```
-VITE_BACKEND_URL=https://your-backend-url.vercel.app
+VITE_BACKEND_URL='https://your-backend-url.vercel.app'
 VITE_CURRENCY=$
 ```
 
